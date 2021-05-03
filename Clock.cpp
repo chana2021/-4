@@ -33,22 +33,30 @@ Clock:: ~Clock() {
 Clock:: Clock(int myHour, int myMinute, int mySecond) {
 	if (myHour > 23) {
 		hour = 00;
+		minute = 00;
+		second = 00;
 		cout << "Invalid time - more than 24 hours." << endl;
 	}
 	if (myHour < 0) {
 		hour = 00;
+		minute = 00;
+		second = 00;
 		cout << "Invalid time - negative number of hours." << endl;
 	}
 	if ((myHour < 24) && (myHour > 0))//true
 		hour = myHour;
 	
 	if (myMinute > 59) {
+		hour = 00;
 		minute = 00;
+		second = 00;
 		cout << "Invalid time - more than 60 minutes." << endl;
 	}	
 	if (myMinute < 0)
 	{
+		hour = 00;
 		minute = 00;
+		second = 00;
 		cout << "Invalid time - negative number of minutes." << endl;
 	}
 	
@@ -56,11 +64,15 @@ Clock:: Clock(int myHour, int myMinute, int mySecond) {
 		minute = myMinute;
 	
 	if (mySecond > 59) {
+		hour = 00;
+		minute = 00;
 		second = 00;
 		cout << "Invalid time - more than 60 seconds." << endl;
 	}
 	if (mySecond < 0)
 	{
+		hour = 00;
+		minute = 00;
 		second = 00;
 		cout << "Invalid time - negative number of seconds." << endl;
 	}
@@ -104,21 +116,21 @@ Clock& Clock:: operator+=(const int mySecond) {
 
 ostream& operator<<(ostream& os, const Clock& r)//pelet
 {
-	if (r.hour % 10 != 0)
+	if (r.hour<9)
 		os<<"0" << r.hour <<":";
 	else
 		os<< r.hour << ":";
-	if (r.minute % 10 != 0)
+	if (r.minute<9)
 		os << "0" << r.minute << ":";
 	else
 		os << r.minute << ":";
-	if (r.second % 10 != 0)
-		os << "0" << r.second << ":";
+	if (r.second <9)
+		os << "0" << r.second;
 	else
 		os << r.second ;
 	return os;
 }
- istream& operator>>(istream& is, Clock r)//
+ istream& operator>>(istream& is, Clock& r)//
 {
 	
 	is >> r.hour;

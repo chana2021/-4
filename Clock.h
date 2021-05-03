@@ -24,7 +24,7 @@ public:
 	Clock(const Clock& ms); //copy constructor
 	Clock& operator+=(const int mySecond);//+=
 	friend ostream& operator<<(ostream& os, const Clock& r);
-	friend istream& operator>>(istream& is, Clock r);
+	friend istream& operator>>(istream& is, Clock& r);
 
 
 
